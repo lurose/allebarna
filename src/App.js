@@ -1,28 +1,25 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
 import children from "./clipart-children.png";
 
 function App() {
-  const [vitsIndex,setVitsIndex] = React.useState(0)
-  const [name,setName] = React.useState("")
-  
+  const [vitsIndex, setVitsIndex] = React.useState(0);
+  const [name, setName] = React.useState("");
+
   function getJokeFromName(name) {
-    const jokesWithCorrectName = vitser.filter(vits =>
-      vits.name.toLocaleLowerCase() === name.toLocaleLowerCase());
-      return jokesWithCorrectName;
+    const jokesWithCorrectName = vitser.filter(
+      (vits) => vits.name.toLocaleLowerCase() === name.toLocaleLowerCase()
+    );
+    return jokesWithCorrectName;
   }
-  
-  
-  
+
   function handleJokeClick(direction) {
-    if(direction === "next"){
+    if (direction === "next") {
       const getJokeFromNameLength = getJokeFromName(name).length;
-      if(vitsIndex<getJokeFromNameLength.length-1){
-        setVitsIndex(vitsIndex+1)
-      }
-      else {
-        if(vitsIndex>0)
-        setVitsIndex(vitsIndex-1)
+      if (vitsIndex < getJokeFromNameLength.length - 1) {
+        setVitsIndex(vitsIndex + 1);
+      } else {
+        if (vitsIndex > 0) setVitsIndex(vitsIndex - 1);
       }
     }
   }
@@ -37,7 +34,11 @@ function App() {
           <p className="vitser">{getJokeFromName(name)[vitsIndex]?.joke}</p>
         </div>
       )}
-      <input type="text" placeholder="Navnet ditt.." value={name} onChange={(event) => setName(event.target.value)}/>
+      <input
+        type="text"
+        placeholder="Navnet ditt.."
+        value={name} onChange={(event) => setName(event.target.value)}
+      />
       <button onClick={() => handleJokeClick("next")}>Gi meg en vits</button>
       
       <h2>{name}</h2>
@@ -49,25 +50,27 @@ function App() {
 const vitser = [
   {
     joke: "Alle barna brukte kondom unntatt Henning, han brukte presenning.",
-    name: "Henning"
+    name: "Henning",
   },
   {
-    joke: "Alle barna kom ut fra kinoen unntatt Tord, han var blitt utsatt for mord.",
-    name: "Tord"
+    joke:
+      "Alle barna kom ut fra kinoen unntatt Tord, han var blitt utsatt for mord.",
+    name: "Tord",
   },
   {
-    joke: "Alle barna tittet inn i mikrobølgovnen, unntatt Tord, han tittet ut.",
-    name: "Tord"
+    joke:
+      "Alle barna tittet inn i mikrobølgovnen, unntatt Tord, han tittet ut.",
+    name: "Tord",
   },
   {
     joke: "Alle barna så på mikrobølgovnen unntatt Minni, hun lå inni.",
-    name: "Minni"
+    name: "Minni",
   },
   {
     joke: "Alle barna stekte pølser unntatt Lill, hun var grill.",
-    name: "Lill"
-  }
-]
+    name: "Lill",
+  },
+];
 
 const vitser2 = [
   "Alle barna brukte kondom unntatt Henning, han brukte presenning.",
@@ -108,8 +111,7 @@ const vitser2 = [
   "Alle barna klatret i trærne unntatt Finn, han hadde muskelsvinn.",
   "Alle barna hadde sugerør unntatt Torkel han hadde snorkel.",
   "Alle barna hadde migrene unntatt Frode det var han som slo dem i hodet.",
-  "Alle barna sang vakkert unntatt Paula hu bare gaula."
-  ]
+  "Alle barna sang vakkert unntatt Paula hu bare gaula.",
+];
 
 export default App;
-
