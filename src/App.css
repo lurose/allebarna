@@ -1,6 +1,5 @@
 header {
   display: inline-block;
-  border-style: dotted;
   float: right;
   padding: 5px;
 }
@@ -16,6 +15,7 @@ header {
   font-family: 'Permanent Marker', cursive;
   font-size: 50px;
   font-weight: 400;
+  margin-top: 50px;
 }
 
 img {
@@ -37,6 +37,7 @@ footer {
   font-size: 10px;
   background-color: burlywood;
   padding: 5px;
+  margin: 20px;
 }
 
 button {

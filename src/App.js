@@ -26,7 +26,10 @@ function App() {
 
   return (
     <div className="App">
-      <header>Om meg</header>
+      <header>
+        <button>Om meg</button>
+        <button>Legg til vits</button>
+      </header>
       <h1 className="title">Alle barna vitser</h1>
       <img src={children}/>
       {name && (
@@ -40,8 +43,6 @@ function App() {
         value={name} onChange={(event) => setName(event.target.value)}
       />
       <button onClick={() => handleJokeClick("next")}>Gi meg en vits</button>
-      
-      <h2>{name}</h2>
       <footer>Laget av Rose Lu</footer>
     </div>
   );
@@ -53,13 +54,12 @@ const vitser = [
     name: "Henning",
   },
   {
-    joke:
-      "Alle barna kom ut fra kinoen unntatt Tord, han var blitt utsatt for mord.",
+    joke: "Alle barna kom ut fra kinoen unntatt Tord, han var blitt utsatt for mord.",
     name: "Tord",
   },
   {
     joke:
-      "Alle barna tittet inn i mikrobølgovnen, unntatt Tord, han tittet ut.",
+      "Alle barna tittet inn i mikrobølgovnen, unntatt Knut, han tittet ut.",
     name: "Tord",
   },
   {
@@ -70,6 +70,14 @@ const vitser = [
     joke: "Alle barna stekte pølser unntatt Lill, hun var grill.",
     name: "Lill",
   },
+  {
+    joke: "Alle barna våknet om morgenen unntatt Finn, han sovnet stille inn",
+    name: "Finn",
+  },
+  {
+    joke: "Alle barna sang vakkert unntatt Paula hu bare gaula.",
+    name: "Paula",
+  }
 ];
 
 const vitser2 = [
