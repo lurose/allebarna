@@ -3,27 +3,43 @@ import './App.css';
 import children from "./clipart-children.png";
 
 function App() {
-  const [vits,setVits] = React.useState(0)
-  const [nyVits,setNyVits] = React.useState("")
+  const [vitsIndex,setVitsIndex] = React.useState(0)
+  const [name,setName] = React.useState("")
+  
+  function getJokeFromName(name) {
+    const jokesWithCorrectName = vitser.filter(vits =>
+      vits.name.toLocaleLowerCase() === name.toLocaleLowerCase());
+      return jokesWithCorrectName;
+  }
+  
+  
+  
   function handleJokeClick(direction) {
     if(direction === "next"){
-      if(vits<vitser.length-1){
-        setVits(vits+1)
+      const getJokeFromNameLength = getJokeFromName(name).length;
+      if(vitsIndex<getJokeFromNameLength.length-1){
+        setVitsIndex(vitsIndex+1)
       }
       else {
-        setVits(0)
+        if(vitsIndex>0)
+        setVitsIndex(vitsIndex-1)
       }
     }
   }
+
   return (
     <div className="App">
       <header>Om meg</header>
       <h1 className="title">Alle barna vitser</h1>
       <img src={children}/>
-      <p className="vitser">{vitser[vits]}</p>
-      <input type="text" placeholder="Navnet ditt.." value={nyVits} onChange={(event) => setNyVits(event.target.value)}/>
-      <button onClick={() => handleJokeClick("next")}>Neste vits</button>
-      <h2>{nyVits}</h2>
+      <input type="text" placeholder="Navnet ditt.." value={name} onChange={(event) => setName(event.target.value)}/>
+      {name && (
+        <div>
+          <p className="vitser">{getJokeFromName(name)[vitsIndex]}</p>
+          <button onClick={() => handleJokeClick("next")}>Neste vits</button>
+        </div>
+      )}
+      <h2>{name}</h2>
       <footer>Laget av Rose Lu</footer>
     </div>
   );
