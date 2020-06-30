@@ -32,13 +32,14 @@ function App() {
       <header>Om meg</header>
       <h1 className="title">Alle barna vitser</h1>
       <img src={children}/>
-      <input type="text" placeholder="Navnet ditt.." value={name} onChange={(event) => setName(event.target.value)}/>
       {name && (
         <div>
-          <p className="vitser">{getJokeFromName(name)[vitsIndex]}</p>
-          <button onClick={() => handleJokeClick("next")}>Neste vits</button>
+          <p className="vitser">{getJokeFromName(name)[vitsIndex]?.joke}</p>
         </div>
       )}
+      <input type="text" placeholder="Navnet ditt.." value={name} onChange={(event) => setName(event.target.value)}/>
+      <button onClick={() => handleJokeClick("next")}>Gi meg en vits</button>
+      
       <h2>{name}</h2>
       <footer>Laget av Rose Lu</footer>
     </div>
