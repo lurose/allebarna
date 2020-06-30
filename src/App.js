@@ -5,6 +5,7 @@ import children from "./clipart-children.png";
 function App() {
   const [vitsIndex, setVitsIndex] = React.useState(0);
   const [name, setName] = React.useState("");
+  const [buttonClick, setButtonClick] = React.useState(false);
 
   function getJokeFromName(name) {
     const jokesWithCorrectName = vitser.filter(
@@ -32,7 +33,8 @@ function App() {
       </header>
       <h1 className="title">Alle barna vitser</h1>
       <img src={children}/>
-      {name && (
+
+      {buttonClick && (
         <div>
           <p className="vitser">{getJokeFromName(name)[vitsIndex]?.joke}</p>
         </div>
@@ -40,9 +42,10 @@ function App() {
       <input
         type="text"
         placeholder="Navnet ditt.."
-        value={name} onChange={(event) => setName(event.target.value)}
+        value={name}
+        onChange={(event) => setName(event.target.value)}
       />
-      <button onClick={() => handleJokeClick("next")}>Gi meg en vits</button>
+      <button onClick={() => setButtonClick(!buttonClick)}>Gi meg en vits</button>
       <footer>Laget av Rose Lu</footer>
     </div>
   );
