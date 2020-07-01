@@ -6,6 +6,9 @@ function App() {
   const [vitsIndex, setVitsIndex] = React.useState(0);
   const [name, setName] = React.useState("");
   const [buttonClick, setButtonClick] = React.useState(false);
+  React.useEffect(() => {
+    setButtonClick(false);
+  }, [name, setButtonClick]);
 
   function getJokeFromName(name) {
     const jokesWithCorrectName = vitser.filter(
@@ -32,7 +35,7 @@ function App() {
         <button>Legg til vits</button>
       </header>
       <h1 className="title">Alle barna vitser</h1>
-      <img src={children}/>
+      <img src={children} />
 
       {buttonClick && (
         <div>
@@ -45,7 +48,9 @@ function App() {
         value={name}
         onChange={(event) => setName(event.target.value)}
       />
-      <button onClick={() => setButtonClick(!buttonClick)}>Gi meg en vits</button>
+      <button onClick={() => setButtonClick(!buttonClick)}>
+        Gi meg en vits
+      </button>
       <footer>Laget av Rose Lu</footer>
     </div>
   );
@@ -57,7 +62,8 @@ const vitser = [
     name: "Henning",
   },
   {
-    joke: "Alle barna kom ut fra kinoen unntatt Tord, han var blitt utsatt for mord.",
+    joke:
+      "Alle barna kom ut fra kinoen unntatt Tord, han var blitt utsatt for mord.",
     name: "Tord",
   },
   {
@@ -80,7 +86,7 @@ const vitser = [
   {
     joke: "Alle barna sang vakkert unntatt Paula hu bare gaula.",
     name: "Paula",
-  }
+  },
 ];
 
 const vitser2 = [
