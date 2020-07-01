@@ -1,11 +1,13 @@
 import React from "react";
 import "./App.css";
+import {saveToLocalStorage, getFromLocalStorage} from './localStorage.js'
 import children from "./clipart-children.png";
 
 function App() {
   const [vitsIndex, setVitsIndex] = React.useState(0);
   const [name, setName] = React.useState("");
   const [buttonClick, setButtonClick] = React.useState(false);
+  const [joke, setJoke] = React.useState("")
   React.useEffect(() => {
     setButtonClick(false);
   }, [name, setButtonClick]);
@@ -17,29 +19,30 @@ function App() {
     return jokesWithCorrectName;
   }
 
-  function handleJokeClick(direction) {
-    if (direction === "next") {
-      const getJokeFromNameLength = getJokeFromName(name).length;
-      if (vitsIndex < getJokeFromNameLength.length - 1) {
-        setVitsIndex(vitsIndex + 1);
-      } else {
-        if (vitsIndex > 0) setVitsIndex(vitsIndex - 1);
-      }
-    }
+  function addNewJoke() {
+    alert("Her skal det være mulig å legge til en egen alle barna vits snart");
+    return(
+      <div>
+        <input placeholder='navn' />
+        <input placeholder='vits' />
+      </div>
+    )
+    //window.saveToLocalStorage(joke, JSON.stringify(joke))
   }
 
   return (
     <div className="App">
       <header>
         <button>Om meg</button>
-        <button>Legg til vits</button>
+        <button onClick={() => addNewJoke()}>Legg til vits</button>
       </header>
       <h1 className="title">Alle barna vitser</h1>
       <img src={children} />
-
-      {buttonClick && (
+      
+      {buttonClick && name && (
         <div>
-          <p className="vitser">{getJokeFromName(name)[vitsIndex]?.joke}</p>
+          <p className="vitser">{getJokeFromName(name)[vitsIndex]?.joke 
+            || `Ingen vitser med ${name} tilgjengelig:((` }</p>
         </div>
       )}
       <input
