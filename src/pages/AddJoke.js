@@ -1,5 +1,6 @@
 import React from "react";
 import { getFromLocalStorage, saveToLocalStorage } from "../utils/localStorage";
+import "./AddJoke.css"
 
 export function AddJoke() {
   const [joke, setJoke] = React.useState("");

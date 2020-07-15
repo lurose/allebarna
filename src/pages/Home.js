@@ -31,6 +31,7 @@ export function Home() {
           </p>
         </div>
       )}
+      <div className="Input">
       <input
         type="text"
         placeholder="Navnet ditt.."
@@ -40,6 +41,7 @@ export function Home() {
       <button onClick={() => setButtonClick(!buttonClick)}>
         Gi meg en vits
       </button>
+      </div>
     </div>
   );
 }

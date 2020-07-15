@@ -27,10 +27,6 @@ img {
   font-size: 30px;
 }
 
-button {
-  background-color: cadetblue;
-  padding: 5px 10px;
-}
 
 #nyVits {
   background-color: greenyellow;
@@ -39,6 +35,17 @@ button {
 input {
   padding: 5px 10px;
   margin-top: 30px;
+}
+
+#Input {
+  display: block;
+  margin: 0 auto;
+  padding: 5px 10px;
+}
+
+button {
+  background-color: cadetblue;
+  padding: 5px 10px;
 }
 
 body {

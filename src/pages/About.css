@@ -1,0 +1,18 @@
+#About {
+    margin: auto;
+    vertical-align: middle;
+}
+
+img {
+    opacity: 0.7;
+    width: 20%;
+    border-radius: 100%;
+    padding-top: 5%;
+}
+
+h1 {
+    text-transform: uppercase;
+}
+
+
+
