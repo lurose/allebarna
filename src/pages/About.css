@@ -8,6 +8,13 @@ img {
 h1 {
     text-transform: uppercase;
     font-size: 2em;
+    margin-bottom: 0;
+}
+
+.name {
+    color: #e3242b;
+    margin: 0;
+    font-size: 4em;
 }
 
 .container {
@@ -15,10 +22,14 @@ h1 {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    min-height: 100%;
 }
 
 .item {
     text-align: center;
     margin: 10% 2%;
+}
+
+.picture {
+    text-align: center;
+    margin-top: 10%;
 }

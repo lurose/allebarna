@@ -27,7 +27,7 @@ export function Home() {
         <div>
           <p className="vitser">
             {getJokeFromName(name)[0]?.joke ||
-              `Ingen vitser med ${name} tilgjengelig:((`}
+              `Ingen vitser med ${name} tilgjengelig..`}
           </p>
         </div>
       )}
