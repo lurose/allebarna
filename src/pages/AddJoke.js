@@ -35,18 +35,18 @@ export function AddJoke() {
 
   return (
     <div>
-      <div>
+      <div className=''>
         <input
           type="text"
           value={jokeName}
           onChange={(event) => setJokeName(event.target.value)}
-          placeholder="Navn i vitsen"
+          placeholder="Navn i vitsen.."
         />
-        <input
+        <textarea
           type="text"
           value={joke}
           onChange={(event) => setJoke(event.target.value)}
-          placeholder="Skriv vits her"
+          placeholder="Selve vitsen.."
         />
         <button onClick={() => handleSaveJoke()}>Lagre vits</button>
       </div>

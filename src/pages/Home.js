@@ -33,7 +33,7 @@ export function Home() {
       )}
       <div className="Input">
       <input
-        type="text"
+        type="name"
         placeholder="Navnet ditt.."
         value={name}
         onChange={(event) => setName(event.target.value)}
