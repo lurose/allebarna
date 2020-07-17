@@ -1,6 +1,6 @@
 import React from "react";
 import { getFromLocalStorage } from "../utils/localStorage";
-import children from "./clipart-children.png";
+import children from "./assets/children.png";
 import "./Home.css";
 
 export function Home() {
@@ -38,7 +38,7 @@ export function Home() {
         value={name}
         onChange={(event) => setName(event.target.value)}
       />
-      <button onClick={() => setButtonClick(!buttonClick)}>
+      <button type='giVits' onClick={() => setButtonClick(!buttonClick)}>
         Gi meg en vits
       </button>
       </div>

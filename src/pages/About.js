@@ -1,7 +1,7 @@
 import React from "react";
-import me from "./me.jpg";
+import me from "./assets/me.jpg";
+import icon from "./assets/github.webp";
 import "./About.css";
-
 
 
 
@@ -17,6 +17,9 @@ export function About() {
           <h1 className='name'>Rose</h1>
           <h2>KYBERNETIKKSTUDENT VED NTNU</h2>
           <p>Dette er mitt første møte med React og Frontend</p>
+          <a href="https://github.com/lurose/allebarna">
+            <img src={icon} style={{width:50}}/>
+          </a>
         </div>
     </div>
     </div>

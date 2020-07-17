@@ -43,7 +43,7 @@ input [type='name'] {
   padding: 5px 10px;
 }
 
-button {
+button[type='giVits'] {
   background-color: cadetblue;
   padding: 5px 10px;
 }
