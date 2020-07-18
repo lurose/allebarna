@@ -9,52 +9,53 @@ export function AddJoke() {
   const [joke, setJoke] = React.useState("");
   const [jokeName, setJokeName] = React.useState("");
   const [jokeIsSaved, setJokeIsSaved] = React.useState(false);
+  const [anError, setAnError] = React.useState("");
 
   React.useEffect(() => {
     console.log("jokeIsSaved", jokeIsSaved);
   }, [jokeIsSaved]);
 
   function handleSaveJoke() {
-    handleValidation();
-    
-    if(jokeIsSaved) {
+    if(handleValidation()){
     // hvis vi ikke får noen jokes så setter vi den til ett tomt array
-    const currentJokes = getFromLocalStorage("jokes") || [];
+      const currentJokes = getFromLocalStorage("jokes") || [];
 
     // "...currentJokes" lager ett kopi av array'et vi har fra før av
     // kalles en spread operator
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
     
-    console.log('lagret?? JA');
-    saveToLocalStorage("jokes", [
-      ...currentJokes,
-      { joke: joke, name: jokeName },
-    ]);
+      console.log('lagret?? JA');
+      saveToLocalStorage("jokes", [
+        ...currentJokes,
+        { joke: joke, name: jokeName },
+      ]);
+      setJokeIsSaved(true);
     }
 
     // vi nullstiller feltene
-    setJoke("");
-    setJokeName("");
-    console.log('vært innom her!')
+      setJoke("");
+      setJokeName("");
+      console.log('vært innom her!')
 
-    //setJokeIsSaved(true);
   }
 
   function handleValidation() {
-    setJokeIsSaved(true);
-    //Sjekker om input er gyldig..
     if(!joke || !jokeName) {
-      setJokeIsSaved(false);
       console.log('Kan ikke være tom');
+      setAnError({[anError]: "Kan ikke være tom!"});
+      //setAnError(anError);
+      return false;
     }
     if(!jokeName.match(/^[A-Za-z]+$/)) {
-        setJokeIsSaved(false);
-        console.log('Bare bokstaver er gyldig');
+      console.log('Bare bokstaver er gyldig');
+      return false;
     }
     else if(!joke.includes('Alle barna')) {
-      setJokeIsSaved(false);
       console.log('Ikke gyldig alle barna vits');
+      return false;
+
     }
+    return true;
   }
 
   return (
@@ -72,6 +73,9 @@ export function AddJoke() {
             onChange={(event) => setJokeName(event.target.value)}
             placeholder="Navn i vitsen.."
           />
+          {anError && 
+            <div>{anError}</div>
+          }
         </label>
 
         <label>
