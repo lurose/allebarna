@@ -6,10 +6,11 @@ import emojiHeart from "./assets/emojiHeart.png";
 import emojiTongue from "./assets/emojiTongue.png";
 
 export function AddJoke() {
-  const [joke, setJoke] = React.useState("");
-  const [jokeName, setJokeName] = React.useState("");
+  const [joke, setJoke] = React.useState('');
+  const [jokeName, setJokeName] = React.useState('');
   const [jokeIsSaved, setJokeIsSaved] = React.useState(false);
-  const [anError, setAnError] = React.useState("");
+  const [jokeError, setJokeError] = React.useState('');
+  const [jokeNameError, setJokeNameError] = React.useState('');
 
   React.useEffect(() => {
     console.log("jokeIsSaved", jokeIsSaved);
@@ -24,7 +25,6 @@ export function AddJoke() {
     // kalles en spread operator
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
     
-      console.log('lagret?? JA');
       saveToLocalStorage("jokes", [
         ...currentJokes,
         { joke: joke, name: jokeName },
@@ -35,26 +35,38 @@ export function AddJoke() {
     // vi nullstiller feltene
       setJoke("");
       setJokeName("");
-      console.log('vært innom her!')
-
   }
 
   function handleValidation() {
     if(!joke || !jokeName) {
-      console.log('Kan ikke være tom');
-      setAnError({[anError]: "Kan ikke være tom!"});
-      //setAnError(anError);
+      if(!joke && !jokeName) {
+        setJokeNameError('Et blankt navn? Noe stemmer ikke..');
+        setJokeError('Dette er vel ikke en alle barna vits?');
+      }
+      else if(!jokeName){
+        setJokeNameError('Et blankt navn? Prøv igjen!');
+        setJokeError('');
+      }
+      else if(!joke) {
+        setJokeName('Dette er vel ikke en alle barna vits?');
+        setJokeNameError('');
+      }
       return false;
     }
-    if(!jokeName.match(/^[A-Za-z]+$/)) {
-      console.log('Bare bokstaver er gyldig');
+    else if(!jokeName.match(/^[A-Za-z]+$/)) {
+      setJokeNameError('Kun gyldig med navn som består av bokstaver');
+      setJokeError('');
       return false;
     }
     else if(!joke.includes('Alle barna')) {
-      console.log('Ikke gyldig alle barna vits');
+      setJokeError('Vits har feil format. Må starte med "Alle barna"');
+      setJokeNameError('');
       return false;
 
     }
+    
+    setJokeNameError('');
+    setJokeError('');
     return true;
   }
 
@@ -73,8 +85,8 @@ export function AddJoke() {
             onChange={(event) => setJokeName(event.target.value)}
             placeholder="Navn i vitsen.."
           />
-          {anError && 
-            <div>{anError}</div>
+          {jokeNameError && 
+            <div className='jokeNameError'>{jokeNameError}</div>
           }
         </label>
 
@@ -86,6 +98,9 @@ export function AddJoke() {
             onChange={(event) => setJoke(event.target.value)}
             placeholder="Selve vitsen.."
           />
+          {jokeError && 
+            <div className='jokeError'>{jokeError}</div>
+          }
         </label>
         <button onClick={() => handleSaveJoke()}>
           Lagre vits

@@ -13,6 +13,7 @@ input[type='text'], textarea {
     display: block;
 }
 
+
 label {
     display: block;
     margin: 2%;
@@ -22,4 +23,16 @@ label {
 button {
     background-color: cadetblue;
     padding: 5px 10px;
+}
+
+.jokeError {
+    background-color: #fdecea;
+    color: #ff0000;
+    border-radius: 4px;
+}
+
+.jokeNameError {
+    background-color: #fdecea;
+    color: #ff0000;
+    border-radius: 4px;
 }
