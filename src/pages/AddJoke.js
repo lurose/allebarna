@@ -1,4 +1,4 @@
-import React, { isValidElement } from "react";
+import React from "react";
 import { getFromLocalStorage, saveToLocalStorage } from "../utils/localStorage";
 import "./AddJoke.css";
 import emojiTears from "./assets/emojiTears.png";
@@ -53,7 +53,7 @@ export function AddJoke() {
       }
       return false;
     }
-    else if(!jokeName.match(/^[A-Za-z]+$/)) {
+    else if(!jokeName.match(/^[ÆØÅæøåA-Za-z]+$/)) {
       setJokeNameError('Kun gyldig med navn som består av bokstaver');
       setJokeError('');
       return false;
@@ -107,7 +107,7 @@ export function AddJoke() {
         </button>
       </div>
       {jokeIsSaved && (
-        <div>
+        <div className='saved'>
           Woop woop, vitsen din er lagret!{" "}
           <button onClick={() => setJokeIsSaved(false)}>Ok</button>
         </div>
