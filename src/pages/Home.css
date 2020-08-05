@@ -50,3 +50,7 @@ button[type='giVits'] {
 body {
   background-color: #f7f7f7;
 }
+
+p[name] {
+  text-decoration: solid;
+}
